@@ -266,8 +266,6 @@ const lista=["Bacabal","Carutapera","Codó","Conceição do Lago Açu","Esperant
 const grid=document.getElementById('gridM');
 function render(l){grid.innerHTML=l.length?l.map(n=>`<div class="mun">${n}</div>`).join(''):'<p style="grid-column:1/-1">Nenhum município encontrado.</p>'}
 render(lista);
-document.getElementById('filtro').addEventListener('input',e=>{const t=e.target.value.toLowerCase();render(lista.filter(m=>m.toLowerCase().includes(t)))});
-const il=document.getElementById('inputLitros');
 il.addEventListener('input',()=>{const L=parseFloat(il.value)||0,g=L*2;document.getElementById('resGotas').textContent=g+' gotas';document.getElementById('resMl').textContent=(g/20).toFixed(1).replace('.',',')+' mL'});
 
 const tabs=document.querySelectorAll('.tab'),lists=document.querySelectorAll('.cl');
