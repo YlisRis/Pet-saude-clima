@@ -7,8 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  .video{max-width:380px;margin:26px auto;padding:10px;aspect-ratio:9/16}
+  .pano{display:grid;grid-template-columns:1fr 360px;gap:34px;align-items:start}
+.g2{grid-template-columns:repeat(2,1fr)}
+.video{padding:10px;aspect-ratio:9/16;position:sticky;top:90px}
 .video video{width:100%;height:100%;object-fit:contain;border-radius:14px;background:#000}
+@media(max-width:900px){
+  .pano{grid-template-columns:1fr}
+  .video{max-width:340px;margin:0 auto;position:static}
+}
 :root{--ink:#0f2a4a;--bg1:#d3eafc;--bg2:#eef7ff;--card:#eaf5ff;--soft:#b9d9f5;--mid:#4aa3e8;--red:#d93b3b;--amber:#d98a1a;--text:#1d3552;--nav:#ffffffe6;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#cfe6fb;--bg1:#0b1d33;--bg2:#10294a;--card:#16345a;--soft:#245083;--mid:#6bb9f5;--text:#dbe9f7;--nav:#0b1d33e6}}
@@ -184,22 +190,26 @@ footer ul{padding-left:18px;margin:8px 0 18px}
   <p style="font-size:.78rem;margin-top:20px;opacity:.8">Confirme telefones e abrigos locais com a Defesa Civil e a Secretaria de Saúde do seu município.</p>
 </div></section>
 
-<div class="sk video">
-  <video controls preload="metadata" style="width:100%;height:100%;border-radius:14px">
-    <source src="video.mp4" type="video/mp4">
-  </video>
-</div>
-  
 <section id="panorama"><div class="wrap">
-  <span class="ribbon">Panorama Histórico (1985–2014)</span>
-  <p class="lead">Evidências mapeadas a partir de registros oficiais de decretação de emergência (Revista GeoUECE, 2025).</p>
-  <div class="grid g4" style="margin-top:34px">
-    <div class="sk stat"><div class="l">Ano recorde absoluto</div><div class="n">2009</div><p>140 municípios em emergência (64,5% do Estado) e ~400 mil afetados.</p></div>
-    <div class="sk stat"><div class="l">Maior extensão territorial</div><div class="n">1985</div><p>129 municípios sob portarias federais de emergência por inundações.</p></div>
-    <div class="sk stat"><div class="l">Letalidade leptospirose</div><div class="n" style="color:var(--red)">13,19%</div><p>31 mortes em 235 casos (2013-2022). Doença sazonal com pico em maio.</p></div>
-    <div class="sk stat"><div class="l">Municípios prioritários</div><div class="n" style="color:var(--amber)">25</div><p>Monitorados pelo Comitê Estadual de Saúde em Desastres (CESD / SES-MA).</p></div>
+  <div class="pano">
+    <div>
+      <span class="ribbon">Panorama Histórico (1985–2014)</span>
+      <p class="lead">Evidências mapeadas a partir de registros oficiais de decretação de emergência (Revista GeoUECE, 2025).</p>
+      <div class="grid g2" style="margin-top:34px">
+        <div class="sk stat"><div class="l">Ano recorde absoluto</div><div class="n">2009</div><p>140 municípios em emergência (64,5% do Estado) e ~400 mil afetados.</p></div>
+        <div class="sk stat"><div class="l">Maior extensão territorial</div><div class="n">1985</div><p>129 municípios sob portarias federais de emergência por inundações.</p></div>
+        <div class="sk stat"><div class="l">Letalidade leptospirose</div><div class="n" style="color:var(--red)">13,19%</div><p>31 mortes em 235 casos (2013-2022). Doença sazonal com pico em maio.</p></div>
+        <div class="sk stat"><div class="l">Municípios prioritários</div><div class="n" style="color:var(--amber)">25</div><p>Monitorados pelo Comitê Estadual de Saúde em Desastres (CESD / SES-MA).</p></div>
+      </div>
+      <div class="sk note"><strong>🌧️ Fatores hidrológicos e climáticos:</strong> o relevo plano das planícies fluviais provoca a desaceleração brusca das águas drenadas dos planaltos nos vales dos rios <em>Mearim, Pindaré, Tocantins, Parnaíba, Maracaçumé e Turiaçu</em>, quadro intensificado pelos sistemas meteorológicos <strong>ZCIT</strong> e <strong>ZCAS</strong>.</div>
+    </div>
+
+    <div class="sk video">
+      <video controls preload="metadata" playsinline>
+        <source src="video.mp4?v=2" type="video/mp4">
+      </video>
+    </div>
   </div>
-  <div class="sk note"><strong>🌧️ Fatores hidrológicos e climáticos:</strong> o relevo plano das planícies fluviais provoca a desaceleração brusca das águas drenadas dos planaltos nos vales dos rios <em>Mearim, Pindaré, Tocantins, Parnaíba, Maracaçumé e Turiaçu</em>, quadro intensificado pelos sistemas meteorológicos <strong>ZCIT</strong> e <strong>ZCAS</strong>.</div>
 </div></section>
 
 <section id="direito" class="band"><div class="wrap">
