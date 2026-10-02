@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inundações, Saúde Coletiva e Justiça Climática | PET-Saúde MA</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            maranhao: {
+              navy: '#0b253a',
+              teal: '#0d766e',
+              emerald: '#059669',
+              amber: '#d97706',
+              red: '#dc2626',
+              indigo: '#312e81',
+              surface: '#f8fafc'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-maranhao-surface text-slate-800 antialiased font-sans">
+
+  <!-- BARRA DE NAVEGAÇÃO -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="p-2 bg-teal-700 text-white rounded-lg font-bold text-lg leading-none">PET</span>
+        <div>
+          <span class="font-bold text-slate-900 block leading-tight">PET-Saúde: Equidade & Clima</span>
+          <span class="text-xs text-slate-500">Maranhão • Saúde Única, Território e Direito</span>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+        <a href="#panorama" class="hover:text-teal-700 transition">Histórico</a>
+        <a href="#leptospirose" class="hover:text-teal-700 transition">Leptospirose</a>
+        <a href="#direito" class="hover:text-teal-700 transition font-semibold text-teal-800">Direito & STF</a>
+        <a href="#municipios" class="hover:text-teal-700 transition">25 Municípios CESD</a>
+        <a href="#cloracao" class="hover:text-teal-700 transition">Calculadora</a>
+      </nav>
+      <div class="flex items-center">
+        <a href="#emergencia" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-md shadow-sm transition flex items-center gap-1.5">
+          <i data-lucide="phone-call" class="w-4 h-4"></i> Linhas de Emergência
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-gradient-to-b from-maranhao-navy via-[#133e5c] to-teal-900 text-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-200 text-xs font-semibold mb-4 border border-teal-400/30">
+          <i data-lucide="scale" class="w-4 h-4"></i> Saúde Coletiva • Vigilância Epidemiológica • Justiça Climática
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+          Impactos das Inundações no Maranhão: Da Emergência Sanitária ao Direito Climático
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed">
+          Articulação transdisciplinar entre dados epidemiológicos da SES-MA, geomorfologia das bacias hidrográficas e a jurisprudência climática vinculante dos Tribunais Superiores (STF/STJ).
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#direito" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold px-5 py-2.5 rounded-lg text-sm transition flex items-center gap-2">
+            <i data-lucide="book-open" class="w-4 h-4"></i> Ver Marco Jurídico & Precedentes
+          </a>
+          <a href="#panorama" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-5 py-2.5 rounded-lg text-sm transition">
+            Panorama Epidemiológico
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANORAMA HISTÓRICO & MÉTRICAS -->
+  <section id="panorama" class="py-14 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Panorama Histórico das Inundações (1985–2014)</h2>
+        <p class="text-sm text-slate-600 mt-2">
+          Evidências mapeadas a partir de registros oficiais de decretação de emergência (Revista GeoUECE, 2025).
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 text-center">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Ano Recorde Absoluto</p>
+          <p class="text-3xl sm:text-4xl font-extrabold text-teal-700 mt-2">2009</p>
+          <p class="text-xs text-slate-600 mt-2 font-medium">140 municípios em emergência (64,5% do Estado) e ~400 mil afetados.</p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 text-center">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Maior Extensão Territorial</p>
+          <p class="text-3xl sm:text-4xl font-extrabold text-slate-800 mt-2">1985</p>
+          <p class="text-xs text-slate-600 mt-2 font-medium">129 municípios sob portarias federais de emergência por inundações.</p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 text-center">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Letalidade Leptospirose</p>
+          <p class="text-3xl sm:text-4xl font-extrabold text-red-600 mt-2">13,19%</p>
+          <p class="text-xs text-slate-600 mt-2 font-medium">31 mortes em 235 casos (2013-2022). Doença sazonal com pico em maio.</p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 text-center">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Municípios Prioritários</p>
+          <p class="text-3xl sm:text-4xl font-extrabold text-amber-600 mt-2">25</p>
+          <p class="text-xs text-slate-600 mt-2 font-medium">Monitorados pelo Comitê Estadual de Saúde em Desastres (CESD / SES-MA).</p>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs text-slate-600 leading-relaxed">
+        <strong>Fatores Hidrológicos e Climáticos:</strong> O relevo plano das planícies fluviais provoca a desaceleração brusca das águas drenadas dos planaltos nos vales dos rios <em>Mearim, Pindaré, Tocantins, Parnaíba, Maracaçumé e Turiaçu</em>, quadro intensificado pelos sistemas meteorológicos <strong>ZCIT</strong> e <strong>ZCAS</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVA SEÇÃO: DIREITO DAS MUDANÇAS CLIMÁTICAS & CONTROLE JUDICIAL -->
+  <section id="direito" class="py-16 bg-slate-900 text-white border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <span class="text-teal-400 font-semibold text-xs uppercase tracking-wider flex items-center gap-2">
+          <i data-lucide="gavel" class="w-4 h-4"></i> Marco Dogmático e Jurisprudencial
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Direito Climático, Litigância e Dever Estatal</h2>
+        <p class="text-sm sm:text-base text-slate-300 mt-3 leading-relaxed">
+          As inundações e seus reflexos sanitários não são eventos isolados: configuram matéria de direitos fundamentais, justiça intergeracional e responsabilidade vinculante do Poder Público perante a Constituição Federal e o Acordo de Paris.
+        </p>
+      </div>
+
+      <!-- Grid de Fundamentos e Jurisprudência -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1: Fundamento Constitucional -->
+        <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="p-2.5 bg-teal-500/20 text-teal-300 rounded-lg"><i data-lucide="shield-check" class="w-5 h-5"></i></span>
+            <h3 class="font-bold text-lg text-white">Direito ao Equilíbrio Climático</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Doutrinadores como <em>Sarlet</em> e <em>Wedy</em> sustentam o clima estável como direito fundamental derivado do art. 225 da CF/88, articulado à PNMC (Lei nº 12.187/2009) e ao Acordo de Paris (Dec. nº 9.073/2017). A tutela climática possui dimensão <strong>intergeracional</strong> (Leite; Ayala), salvaguardando o bem-estar das gerações presentes e futuras.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-700/60 text-xs text-teal-400 font-medium">
+            → Paradigma preventivo e precaucional (Délton W. de Carvalho).
+          </div>
+        </div>
+
+        <!-- Card 2: ADPF 708 (Fundo Clima) -->
+        <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="p-2.5 bg-indigo-500/20 text-indigo-300 rounded-lg"><i data-lucide="landmark" class="w-5 h-5"></i></span>
+            <h3 class="font-bold text-lg text-white">STF: ADPF 708 (Fundo Clima)</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Por 10x1, o Supremo Tribunal Federal firmou que recursos climáticos não podem ser contingenciados ou paralisados discricionariamente pelo Executivo. A corte assentou a <strong>supralegalidade dos tratados ambientais</strong>, equiparando-os materialmente aos tratados de direitos humanos.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-700/60 text-xs text-indigo-300 font-medium">
+            → Execução financeira e adaptação climática são obrigações cogentes.
+          </div>
+        </div>
+
+        <!-- Card 3: Omissão Estatal & Prova Técnica -->
+        <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="p-2.5 bg-amber-500/20 text-amber-300 rounded-lg"><i data-lucide="alert-triangle" class="w-5 h-5"></i></span>
+            <h3 class="font-bold text-lg text-white">Inconstitucionalidade por Omissão</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Consolidado na <strong>ADO 59</strong> (Fundo Amazônia) e <strong>ADPF 760</strong>, a inércia e a insuficiência regulatória do Estado violam a Constituição. No Maranhão, a ausência de órgãos municipais estruturados de Defesa Civil (Lei nº 12.608/2012) reforça a vulnerabilidade crônica de populações periféricas e tradicionais (Justiça Climática).
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-700/60 text-xs text-amber-300 font-medium">
+            → Aplicação do Princípio da Precaução e inversão do ônus probatório (STJ).
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEPTOSPIROSE & AGRAVOS EPIDEMIOLÓGICOS -->
+  <section id="leptospirose" class="py-14 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <span class="text-red-600 font-semibold text-xs uppercase tracking-wider">Vigilância Epidemiológica SES-MA / CIEVS</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Leptospirose e Agravos do Período Chuvoso</h2>
+        <p class="text-sm text-slate-600 mt-2">
+          A infecção por contato com lama e águas de cheias registra pico sistemático no primeiro semestre e demanda intervenção precoce da Atenção Básica para evitar óbitos.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200">
+          <h3 class="text-base font-bold text-slate-900">Salto de Casos (113%)</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Entre 2018 (15 casos) e 2019 (32 casos), o Maranhão registrou um incremento de 113%. No intervalo de 2010 a 2017, computaram-se 195 casos confirmados e 28 óbitos.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200">
+          <h3 class="text-base font-bold text-slate-900">Sazonalidade Crítica (Jan–Jun)</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Notificações no SINAN concentram-se estritamente entre janeiro e junho, alcançando o ápice estatístico em <strong>maio</strong>, associado ao represamento hídrico das planícies.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-50 border border-slate-200">
+          <h3 class="text-base font-bold text-slate-900">Alta Taxa de Letalidade (13,19%)</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Estudo epidemiológico (2013-2022) registrou 235 casos e 31 óbitos. Os picos anuais foram 2019 (37 casos), 2014 (33 casos) e 2022 (31 casos), demonstrando gravidade clínica tardia.
+          </p>
+        </div>
+      </div>
+
+      <!-- Outros agravos do Alerta nº 07 -->
+      <div class="mt-8 p-6 bg-slate-50 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-slate-900 text-sm mb-3">Outros Agravos Sob Alerta nº 07 da SES-MA:</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-600">
+          <div class="p-3 bg-white rounded border border-slate-200">
+            <strong>Arboviroses:</strong> Aumento expressivo de <em>Aedes aegypti</em> (dengue, zika, chikungunya) em recipientes residuais.
+          </div>
+          <div class="p-3 bg-white rounded border border-slate-200">
+            <strong>Doenças Hídricas:</strong> Surtos de diarreias infecciosas decorrentes da contaminação cruzada de poços e alimentos.
+          </div>
+          <div class="p-3 bg-white rounded border border-slate-200">
+            <strong>Animais Peçonhentos:</strong> Deslocamento forçado de serpentes e escorpiões para abrigos secos e residências.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUNICÍPIOS MONITORADOS PELO CESD -->
+  <section id="municipios" class="py-14 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <div>
+          <span class="text-teal-700 font-semibold text-xs uppercase tracking-wider">Vigilância em Desastres (SES-MA)</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">25 Municípios Monitorados pelo CESD</h2>
+          <p class="text-sm text-slate-600 mt-1">Acompanhamento contínuo pelo Comitê Estadual de Saúde em Desastres.</p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <input type="text" id="filtroMunicipio" placeholder="Pesquisar município..." 
+            class="px-4 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-teal-600">
+        </div>
+      </div>
+
+      <div id="gridMunicipios" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+        <!-- Inserido dinamicamente via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA DE CLORAÇÃO -->
+  <section id="cloracao" class="py-14 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5">
+          <span class="text-teal-700 font-semibold text-xs uppercase tracking-wider">Tratamento Domiciliar</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Cloração da Água com Hipoclorito a 2,5%</h2>
+          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+            Medida básica de saúde para garantir água segura durante enchentes e mitigar surtos diarreicos nas comunidades ribeirinhas e periféricas.
+          </p>
+          <div class="mt-4 space-y-2 text-xs text-slate-600">
+            <p class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Dosagem padrão: <strong>2 gotas por litro de água</strong>.</p>
+            <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-emerald-600"></i> Aguardar <strong>30 minutos</strong> antes do consumo humano.</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-2xl shadow-sm">
+          <h3 class="text-base font-bold text-slate-900 mb-4">Calculadora de Dosagem Rápida</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Volume de Água a Tratar (Litros)</label>
+              <input type="number" id="inputLitros" value="20" min="1" max="10000" class="w-full px-4 py-2 border border-slate-300 rounded-lg text-lg font-bold text-teal-800 bg-white focus:ring-2 focus:ring-teal-600">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pt-2">
+              <div class="p-4 bg-teal-50 border border-teal-200 rounded-xl">
+                <span class="text-xs text-teal-900 font-medium">Quantidade em Gotas</span>
+                <p id="resGotas" class="text-2xl sm:text-3xl font-extrabold text-teal-700 mt-1">40 gotas</p>
+              </div>
+              <div class="p-4 bg-slate-100 border border-slate-200 rounded-xl">
+                <span class="text-xs text-slate-700 font-medium">Equivalente em mL</span>
+                <p id="resMl" class="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-1">2,0 mL</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CANAIS DE EMERGÊNCIA -->
+  <section id="emergencia" class="py-12 bg-maranhao-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold">Canais Oficiais de Resposta a Emergências</h2>
+          <p class="text-sm text-slate-300 mt-1">Contatos gratuitos com atuação 24h em suporte a desastres.</p>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <div class="px-5 py-3 bg-white/10 rounded-lg border border-white/15">
+            <span class="text-xs text-slate-300 block">SAMU</span>
+            <span class="text-xl font-bold text-white">192</span>
+          </div>
+          <div class="px-5 py-3 bg-white/10 rounded-lg border border-white/15">
+            <span class="text-xs text-slate-300 block">Corpo de Bombeiros</span>
+            <span class="text-xl font-bold text-white">193</span>
+          </div>
+          <div class="px-5 py-3 bg-white/10 rounded-lg border border-white/15">
+            <span class="text-xs text-slate-300 block">Defesa Civil</span>
+            <span class="text-xl font-bold text-white">199</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ E FONTES CIENTÍFICAS E JURÍDICAS -->
+  <footer class="bg-slate-950 text-slate-400 py-10 text-xs border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-b border-slate-800 pb-6 mb-6">
+        <p class="font-bold text-slate-200 mb-2">Fontes Epidemiológicas, Doutrinárias e Jurisprudenciais:</p>
+        <ul class="space-y-1 text-slate-400">
+          <li>• STF. ADPF nº 708/DF (Fundo Clima) — Rel. Min. Luís Roberto Barroso; ADO nº 59/DF (Fundo Amazônia) — Rel. Min. Rosa Weber.</li>
+          <li>• CF/88 (Art. 225); Acordo de Paris (Dec. nº 9.073/2017); PNMC (Lei nº 12.187/2009); PNPDEC (Lei nº 12.608/2012).</li>
+          <li>• SARLET, I. W.; WEDY, G. (Coord.). <em>Curso de Direito Climático</em>, 2023; CARVALHO, D. W. <em>Dano ambiental futuro</em>, 2013.</li>
+          <li>• Revista GeoUECE (2025). <em>Panorama e impactos socioambientais das inundações no Maranhão (1985-2014)</em>.</li>
+          <li>• SES-MA/CIEVS. <em>Alertas Epidemiológicos nº 02 (Leptospirose) e nº 07 (Chuvas/Pós-chuvas)</em>; Caderno Pedagógico (2025).</li>
+        </ul>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-between text-slate-500">
+        <p>© 2026 PET-Saúde: Equidade e Clima — Maranhão.</p>
+        <p class="mt-2 sm:mt-0">Integração Ensino-Serviço-Comunidade para o SUS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS NATIVO -->
+  <script>
+    lucide.createIcons();
+
+    const municipiosCESD = [
+      "Bacabal", "Carutapera", "Codó", "Conceição do Lago Açu", "Esperantinópolis",
+      "Formosa da Serra Negra", "Governador Nunes Freires", "Imperatriz", "Lago da Pedra", "Lagoa Grande",
+      "Mirador", "Monção", "Passagem Franca", "Pedreiras", "Pindaré-Mirim",
+      "Santa Inês", "São João do Caru", "São João do Soter", "São José de Ribamar", "São Luís",
+      "São Roberto", "Trizidela do Vale", "Tuntum", "Palmeirândia", "Santa Luzia"
+    ];
+
+    const grid = document.getElementById('gridMunicipios');
+    const filtroInput = document.getElementById('filtroMunicipio');
+
+    function renderMunicipios(lista) {
+      grid.innerHTML = '';
+      if(lista.length === 0) {
+        grid.innerHTML = '<p class="col-span-full text-xs text-slate-500 text-center py-4">Nenhum município encontrado.</p>';
+        return;
+      }
+      lista.forEach(nome => {
+        const item = document.createElement('div');
+        item.className = 'px-3 py-2 bg-white rounded border border-slate-200 text-xs font-semibold text-slate-700 flex items-center gap-2 shadow-2xs hover:border-teal-500 transition';
+        item.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-teal-600"></span> ${nome}`;
+        grid.appendChild(item);
+      });
+    }
+
+    renderMunicipios(municipiosCESD);
+
+    filtroInput.addEventListener('input', (e) => {
+      const termo = e.target.value.toLowerCase();
+      const filtrados = municipiosCESD.filter(m => m.toLowerCase().includes(termo));
+      renderMunicipios(filtrados);
+    });
+
+    const inputLitros = document.getElementById('inputLitros');
+    const resGotas = document.getElementById('resGotas');
+    const resMl = document.getElementById('resMl');
+
+    function atualizarCloracao() {
+      const litros = parseFloat(inputLitros.value) || 0;
+      const gotas = litros * 2;
+      const ml = (gotas / 20).toFixed(1);
+
+      resGotas.textContent = `${gotas} gotas`;
+      resMl.textContent = `${ml} mL`;
+    }
+
+    inputLitros.addEventListener('input', atualizarCloracao);
+  </script>
+</body>
+</html>
