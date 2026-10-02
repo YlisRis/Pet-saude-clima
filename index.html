@@ -95,7 +95,11 @@ footer ul{padding-left:18px;margin:8px 0 18px}
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
 .tab{font:800 1.25rem 'Barlow Condensed';text-transform:uppercase;padding:10px 22px;border:3px solid var(--ink);border-radius:30px;background:var(--bg2);color:var(--ink);cursor:pointer}
 .tab[aria-selected="true"]{background:var(--ink);color:var(--bg2)}
-.cl{list-style:none;margin:0;padding:0;display:none}.cl.on{display:block}
+.cl{list-style:none;margin:0;padding:0;display:none}
+.tr{position:absolute;opacity:0;pointer-events:none}
+#r1:checked~#antes,#r2:checked~#durante,#r3:checked~#depois{display:block}
+#r1:checked~.tabs label[for=r1],#r2:checked~.tabs label[for=r2],#r3:checked~.tabs label[for=r3]{background:var(--ink);color:var(--bg2)}
+#r1:focus-visible~.tabs label[for=r1],#r2:focus-visible~.tabs label[for=r2],#r3:focus-visible~.tabs label[for=r3]{outline:3px solid var(--mid);outline-offset:2px}
 .cl li{margin:0 0 10px}
 .cl label{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border:2px solid var(--ink);border-radius:14px;background:var(--bg2);font-weight:700;font-size:1rem;cursor:pointer}
 .cl input{width:26px;height:26px;flex:none;accent-color:#1b7fd0;margin-top:1px}
@@ -140,13 +144,10 @@ footer ul{padding-left:18px;margin:8px 0 18px}
   <div class="two2">
     <div class="sk panel">
       <h3>✅ O que fazer agora</h3>
-      <div class="tabs" role="tablist">
-        <button class="tab" role="tab" aria-selected="true" data-t="antes">Antes</button>
-        <button class="tab" role="tab" aria-selected="false" data-t="durante">Durante</button>
-        <button class="tab" role="tab" aria-selected="false" data-t="depois">Depois</button>
-      </div>
+      <input class="tr" type="radio" name="t" id="r1" data-t="antes" checked><input class="tr" type="radio" name="t" id="r2" data-t="durante"><input class="tr" type="radio" name="t" id="r3" data-t="depois">
+      <div class="tabs"><label class="tab" for="r1">Antes</label><label class="tab" for="r2">Durante</label><label class="tab" for="r3">Depois</label></div>
       <div class="prog"><i id="prog"></i></div>
-      <ul class="cl on" id="antes">
+      <ul class="cl" id="antes">
         <li><label><input type="checkbox"><span>Separe documentos, remédios e celular em saco plástico</span></label></li>
         <li><label><input type="checkbox"><span>Guarde água potável, comida que não estraga e lanterna</span></label></li>
         <li><label><input type="checkbox"><span>Suba móveis, botijão e objetos importantes</span></label></li>
@@ -168,6 +169,7 @@ footer ul{padding-left:18px;margin:8px 0 18px}
         <li><label><input type="checkbox"><span>Cuidado com cobras e escorpiões em entulhos</span></label></li>
         <li><label><input type="checkbox"><span>Esteve na água? Fique atento aos sintomas nas próximas semanas</span></label></li>
       </ul>
+      <p style="font-size:.8rem;margin:10px 0 0;opacity:.8">Seus ✓ ficam salvos neste aparelho.</p>
     </div>
 
     <div class="sk panel">
@@ -230,7 +232,7 @@ footer ul{padding-left:18px;margin:8px 0 18px}
 <section id="municipios" class="band"><div class="wrap">
   <span class="kicker">Vigilância em Desastres (SES-MA)</span>
   <h2 style="font-size:clamp(2rem,5vw,3.2rem);margin:6px 0 16px">25 Municípios Monitorados pelo CESD</h2>
-  <div id="gridM"></div>
+    <div id="gridM"></div>
 </div></section>
 
 <section id="cloracao"><div class="wrap two">
@@ -247,6 +249,12 @@ footer ul{padding-left:18px;margin:8px 0 18px}
     <input type="number" id="inputLitros" value="20" min="1" max="10000">
     <div class="res"><div><small>Quantidade em gotas</small><strong id="resGotas">40 gotas</strong></div><div><small>Equivalente em mL</small><strong id="resMl">2,0 mL</strong></div></div>
   </div>
+</div></section>
+
+<section id="emergencia" class="emerg"><div class="wrap">
+  <h2 style="font-size:clamp(1.8rem,4vw,2.6rem)">Canais oficiais de resposta a emergências</h2>
+  <p>Contatos gratuitos com atuação 24h em suporte a desastres.</p>
+  <div class="phones"><div><small>SAMU</small><b>192</b></div><div><small>Corpo de Bombeiros</small><b>193</b></div><div><small>Defesa Civil</small><b>199</b></div></div>
 </div></section>
 
 <footer><div class="wrap">
@@ -266,14 +274,15 @@ const lista=["Bacabal","Carutapera","Codó","Conceição do Lago Açu","Esperant
 const grid=document.getElementById('gridM');
 function render(l){grid.innerHTML=l.length?l.map(n=>`<div class="mun">${n}</div>`).join(''):'<p style="grid-column:1/-1">Nenhum município encontrado.</p>'}
 render(lista);
+const il=document.getElementById('inputLitros');
 il.addEventListener('input',()=>{const L=parseFloat(il.value)||0,g=L*2;document.getElementById('resGotas').textContent=g+' gotas';document.getElementById('resMl').textContent=(g/20).toFixed(1).replace('.',',')+' mL'});
 
-const tabs=document.querySelectorAll('.tab'),lists=document.querySelectorAll('.cl');
+const lists=document.querySelectorAll('.cl');
 let saved={};try{saved=JSON.parse(localStorage.getItem('crise')||'{}')}catch(e){}
-lists.forEach(l=>l.querySelectorAll('input').forEach((c,i)=>{c.checked=!!saved[l.id+i];c.addEventListener('change',()=>{saved[l.id+i]=c.checked;try{localStorage.setItem('crise',JSON.stringify(saved))}catch(e){}prog()})}));
-function prog(){const l=document.querySelector('.cl.on'),c=l.querySelectorAll('input');document.getElementById('prog').style.width=(100*[...c].filter(x=>x.checked).length/c.length)+'%'}
-tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.setAttribute('aria-selected',x===t));lists.forEach(l=>l.classList.toggle('on',l.id===t.dataset.t));prog()}));
-prog();
+function atualizaProg(){try{const r=document.querySelector('.tr:checked'),c=document.querySelectorAll('#'+r.dataset.t+' input');document.getElementById('prog').style.width=(100*[...c].filter(x=>x.checked).length/c.length)+'%'}catch(e){}}
+lists.forEach(l=>l.querySelectorAll('input').forEach((c,i)=>{c.checked=!!saved[l.id+i];c.addEventListener('change',()=>{saved[l.id+i]=c.checked;try{localStorage.setItem('crise',JSON.stringify(saved))}catch(e){}atualizaProg()})}));
+document.querySelectorAll('.tr').forEach(r=>r.addEventListener('change',atualizaProg));
+atualizaProg();
 </script>
 </body>
 </html>
