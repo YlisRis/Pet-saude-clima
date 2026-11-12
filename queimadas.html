@@ -91,7 +91,7 @@ select{font:800 1.1rem Nunito;padding:9px 14px;border:3px solid var(--ink);borde
 .steps b{font:800 2.6rem 'Barlow Condensed';line-height:1;color:var(--ink);background:var(--or);border:3px solid var(--ink);border-radius:50%;width:56px;height:56px;display:grid;place-items:center}
 .steps li:nth-child(n+3) b{background:var(--yl)}
 .steps h3{font-size:1.3rem}.steps p{margin:4px 0 0;font-size:.92rem}
-.eff{display:flex;justify-content:space-between;font-size:.78rem;font-weight:800;margin-top:8px}
+.pill{display:inline-block;vertical-align:middle;margin-left:10px;padding:3px 11px;border:2px solid var(--ink);border-radius:30px;font:800 .72rem Nunito,sans-serif;letter-spacing:.02em;text-transform:none;background:var(--or);color:var(--ink)}.pill.n{background:#fff}
 /* checklist */
 .two2{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px;align-items:start}@media(max-width:860px){.two2{grid-template-columns:1fr}}
 .prog{height:12px;border:2px solid var(--ink);border-radius:10px;background:#fff;overflow:hidden;margin:6px 0 16px}.prog i{display:block;height:100%;width:0;background:var(--or);transition:.3s}
@@ -232,13 +232,12 @@ footer ul{padding-left:18px;margin:8px 0 18px}
   <h2 class="t">Da proteção mais eficaz à menos eficaz</h2>
   <span class="under" style="background:#fff"></span>
   <ol class="steps">
-    <li><b>1</b><div><h3>Sair da fumaça</h3><p>Afastar-se por um tempo da área afetada, quando for possível.</p></div></li>
+    <li><b>1</b><div><h3>Sair da fumaça <span class="pill">Mais eficaz</span></h3><p>Afastar-se por um tempo da área afetada, quando for possível.</p></div></li>
     <li><b>2</b><div><h3>Proteger o ambiente</h3><p>Manter janelas e portas fechadas. Onde houver, usar purificador de ar com filtro HEPA ou ventilação central com filtro MERV 13.</p></div></li>
     <li><b>3</b><div><h3>Mudar a rotina</h3><p>Acompanhar a qualidade do ar, suspender exercício ao ar livre (principalmente o intenso) e deixar um plano e remédios de reserva para quem tem asma ou DPOC.</p></div></li>
-    <li><b>4</b><div><h3>Usar máscara</h3><p>Máscara N95 ou equivalente certificada ao sair, quando não der para evitar. Um estudo de modelagem estimou cerca de 30% menos internações respiratórias com o uso correto.</p></div></li>
+    <li><b>4</b><div><h3>Usar máscara <span class="pill n">Menos eficaz</span></h3><p>Máscara N95 ou equivalente certificada ao sair, quando não der para evitar. Um estudo de modelagem estimou cerca de 30% menos internações respiratórias com o uso correto.</p></div></li>
   </ol>
-  <div class="eff"><span>Mais eficaz</span><span>Menos eficaz</span></div>
-
+  
   <div class="two2">
     <div class="sk panel">
       <h3>✅ Plano para dias de fumaça</h3>
