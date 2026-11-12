@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Queimadas e fumaça em Pinheiro (MA) | PET-Saúde MA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<style>
+:root{color-scheme:light;--ink:#4a1c05;--or:#f26a1b;--ord:#b34700;--yl:#ffc93c;--soft:#ffe3a1;--card:#fffaf0;--bg:#fff;--bg2:#fff4cf;--text:#4a2a14;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 96px)}
+*{box-sizing:border-box}
+body{margin:0;font-family:Nunito,system-ui,sans-serif;color:var(--text);background:linear-gradient(180deg,var(--bg),var(--bg2) 45%,var(--bg))}
+h1,h2,h3,h4{font-family:'Barlow Condensed',Impact,sans-serif;color:var(--ink);text-transform:uppercase;line-height:1.05;margin:0}
+a{color:var(--ord)}
+:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+section{padding:54px 0}
+.sk{border:3px solid var(--ink);border-radius:255px 18px 225px 18px/18px 225px 18px 255px;background:var(--card);box-shadow:5px 5px 0 var(--yl)}
+.ribbon{display:inline-block;background:var(--yl);color:var(--ink);font:800 1.5rem 'Barlow Condensed',sans-serif;text-transform:uppercase;padding:10px 38px;clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%)}
+.kicker{font:800 .8rem Nunito;letter-spacing:.12em;text-transform:uppercase;color:var(--ord)}
+.under{display:block;width:min(340px,70%);height:8px;margin-top:10px;background:var(--or);border-radius:10px;transform:rotate(-1deg)}
+.lead{font-size:1.05rem;max-width:680px;margin:14px 0 0}
+h2.t{font-size:clamp(2rem,5vw,3.2rem);margin:6px 0 0}
+.grid{display:grid;gap:22px}.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.two{display:grid;grid-template-columns:5fr 6fr;gap:34px;align-items:center}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+/* header */
+header{position:sticky;top:0;z-index:50;background:#fffffff0;backdrop-filter:blur(8px);border-bottom:3px solid var(--ink);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px 14px;padding-top:8px;padding-bottom:8px;min-height:62px}
+.logo{display:flex;align-items:center;gap:10px;font:800 1.15rem 'Barlow Condensed';text-transform:uppercase;color:var(--ink);text-decoration:none;line-height:1}
+.logo b{background:var(--or);color:var(--ink);padding:6px 9px;border-radius:10px 3px 10px 3px}
+.logo small{display:block;font:600 .7rem Nunito;text-transform:none;opacity:.75}
+nav{display:flex;gap:6px 16px;flex-wrap:wrap;font-weight:800;font-size:.88rem}
+nav a{color:var(--ink);text-decoration:none;padding:4px 0}
+nav a:hover{color:var(--ord)}
+nav a[aria-current]{background:var(--yl);padding:4px 12px;border-radius:30px;border:2px solid var(--ink)}
+.btn{display:inline-block;font:800 .95rem Nunito;padding:10px 18px;border:3px solid var(--ink);border-radius:14px 4px 14px 4px;background:var(--or);color:var(--ink);text-decoration:none;box-shadow:3px 3px 0 var(--ink);transition:.15s}
+.btn:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.w{background:#fff}
+/* hero */
+.hero{padding:64px 0 76px;text-align:center;overflow:hidden;position:relative}
+.hero h1{font-size:clamp(2.6rem,9vw,5.6rem);font-weight:800}
+.hero h1 span{display:block;font:700 .38em Nunito;text-transform:none;letter-spacing:-.01em;margin-top:10px}
+.hero p{max-width:640px;margin:18px auto 26px;font-size:1.1rem}
+.hero .btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.tag{display:inline-block;font:800 .8rem Nunito;padding:5px 14px;border:2px dashed var(--ink);border-radius:30px;margin-bottom:16px;background:#fff}
+.flame{position:absolute;pointer-events:none}
+/* mapa */
+.mapa{padding:12px;margin:0}
+.mapa img{display:block;width:100%;height:auto;border-radius:12px}
+.mapa figcaption{font-size:.78rem;padding:8px 6px 0}
+.facts{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.facts li{padding:11px 14px;border:2px solid var(--ink);border-radius:14px 4px 14px 4px;background:#fff;font-size:.95rem}
+.facts b{font:800 1.5rem 'Barlow Condensed';color:var(--ink);margin-right:6px}
+/* dois riscos */
+.cal{padding:22px;margin-top:30px}
+.row{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin:10px 0 4px}
+.row i{font:800 .62rem Nunito;font-style:normal;text-align:center;padding:9px 0;border-radius:6px;background:#f3ebdc;color:#8a7358}
+.row i.on{background:var(--yl);color:var(--ink)}.row.f i.on{background:var(--or)}
+.cal p{margin:2px 0 14px;font-size:.88rem;font-weight:700}
+/* grafico */
+.ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:26px 0 10px}
+.ctrl label{font-weight:800}
+select{font:800 1.1rem Nunito;padding:9px 14px;border:3px solid var(--ink);border-radius:30px;background:#fff;color:var(--ink)}
+.chart{padding:18px 14px 12px}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{font-family:Nunito;font-weight:700;fill:var(--ink)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.8rem;font-weight:700;margin:6px 6px 0}
+.leg span::before{content:"";display:inline-block;width:12px;height:12px;border:2px solid var(--ink);border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+#lido{margin:12px 6px 2px;font-weight:800;min-height:3.2em}
+.stat{padding:24px 20px;text-align:center}
+.stat .n{font:800 3.6rem 'Barlow Condensed';color:var(--ink);line-height:1}
+.stat p{font-size:.88rem;margin:8px 0 0}
+.note{margin-top:26px;padding:18px 22px;font-size:.92rem}
+/* saude */
+.band{background:var(--yl);clip-path:polygon(0 4%,100% 0,100% 96%,0 100%);padding:84px 0}
+.panel{padding:24px;position:relative}
+.panel .ico{font-size:1.9rem;display:inline-block;background:var(--soft);border:3px solid var(--ink);border-radius:50%;width:56px;height:56px;line-height:50px;text-align:center;margin-bottom:10px}
+.panel h3{font-size:1.5rem;margin-bottom:10px}
+.panel p{font-size:.93rem;margin:0 0 9px}
+.arrow{margin-top:12px;padding-top:10px;border-top:2px dashed var(--ink);font-weight:800;font-size:.82rem}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chips span{padding:10px 16px;border:3px solid var(--ink);border-radius:30px;background:#fff;font-weight:800;font-size:.95rem}
+/* escada */
+.steps{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:start;padding:14px 18px;border:3px solid var(--ink);border-radius:16px 4px 16px 4px;background:#fff}
+.steps li:nth-child(1){margin-right:0}.steps li:nth-child(2){margin-right:3%}.steps li:nth-child(3){margin-right:6%}.steps li:nth-child(4){margin-right:9%}
+.steps b{font:800 2.6rem 'Barlow Condensed';line-height:1;color:var(--ink);background:var(--or);border:3px solid var(--ink);border-radius:50%;width:56px;height:56px;display:grid;place-items:center}
+.steps li:nth-child(n+3) b{background:var(--yl)}
+.steps h3{font-size:1.3rem}.steps p{margin:4px 0 0;font-size:.92rem}
+.eff{display:flex;justify-content:space-between;font-size:.78rem;font-weight:800;margin-top:8px}
+/* checklist */
+.two2{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px;align-items:start}@media(max-width:860px){.two2{grid-template-columns:1fr}}
+.prog{height:12px;border:2px solid var(--ink);border-radius:10px;background:#fff;overflow:hidden;margin:6px 0 16px}.prog i{display:block;height:100%;width:0;background:var(--or);transition:.3s}
+.cl{list-style:none;margin:0;padding:0}.cl li{margin:0 0 10px}
+.cl label{display:flex;gap:14px;align-items:flex-start;padding:13px 15px;border:2px solid var(--ink);border-radius:14px;background:#fff;font-weight:700;font-size:.96rem;cursor:pointer}
+.cl input{width:26px;height:26px;flex:none;accent-color:var(--or);margin-top:1px}
+.cl input:checked+span{text-decoration:line-through;opacity:.55}
+.sinais{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.sinais div{padding:11px 13px;border:2px solid var(--or);border-radius:14px;background:#fff;font-weight:800;font-size:.92rem}
+.calls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.call{display:block;text-align:center;text-decoration:none;color:var(--ink);padding:12px 8px;border:3px solid var(--ink);border-radius:18px 4px 18px 4px;background:var(--yl);box-shadow:4px 4px 0 var(--ink);font-weight:800;min-height:64px}
+.call b{display:block;font:800 2.2rem 'Barlow Condensed';line-height:1}
+footer{padding:34px 0 calc(34px + env(safe-area-inset-bottom,0px));font-size:.78rem;border-top:3px solid var(--ink);background:var(--card)}
+footer ul{padding-left:18px;margin:8px 0 18px}
+/* mapa ao vivo */
+.seg{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
+.seg label{cursor:pointer}.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:block;padding:10px 16px;border:3px solid var(--ink);border-radius:30px;background:#fff;font-weight:800;font-size:.92rem}
+.seg input:checked+span{background:var(--or)}
+.seg input:focus-visible+span{outline:3px solid var(--ink);outline-offset:2px}
+.live{display:grid;grid-template-columns:1fr 190px;gap:18px;margin-top:18px;align-items:start}
+@media(max-width:760px){.live{grid-template-columns:1fr}#mapaw{height:380px!important}}
+#mapaw{position:relative;z-index:0;height:460px;border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:5px 5px 0 var(--yl);background:var(--bg2)}
+.leg2{padding:14px;text-align:center;font-size:.8rem;font-weight:800}.leg2 img{max-width:100%;height:auto;margin-top:8px;background:#fff;border-radius:6px}
+#desc{margin:16px 0 0;font-weight:700;max-width:720px}#ponto{margin:8px 0 0;font-weight:800;min-height:2.6em}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="index.html"><b>PET</b><div>PET-Saúde: Equidade &amp; Clima <small>← voltar ao início</small></div></a>
+  <nav aria-label="Seções"><a href="index.html">Inundações</a><a href="queimadas.html" aria-current="page">🔥 Queimadas</a><a href="#pinheiro">Pinheiro</a><a href="#focos">Focos</a><a href="#mapa">Mapa</a><a href="#saude">Saúde</a><a href="#prevencao">Prevenção</a></nav>
+</div></header>
+
+<section class="hero">
+  <svg class="flame" style="left:5%;top:50px;opacity:.9" width="70" height="90" viewBox="0 0 60 80" aria-hidden="true"><path d="M30 3C34 20 52 28 52 52a22 22 0 01-44 0c0-12 6-19 12-27 2 8 6 11 8 13 2-11 0-23 2-35z" fill="#ffc93c" stroke="#4a1c05" stroke-width="3" stroke-linejoin="round"/><path d="M30 40c3 7 10 10 10 18a10 10 0 01-20 0c0-6 7-9 10-18z" fill="#f26a1b" stroke="#4a1c05" stroke-width="3" stroke-linejoin="round"/></svg>
+  <svg class="flame" style="right:6%;top:90px;opacity:.8" width="50" height="64" viewBox="0 0 60 80" aria-hidden="true"><path d="M30 3C34 20 52 28 52 52a22 22 0 01-44 0c0-12 6-19 12-27 2 8 6 11 8 13 2-11 0-23 2-35z" fill="#f26a1b" stroke="#4a1c05" stroke-width="3" stroke-linejoin="round"/></svg>
+  <div class="wrap">
+    <span class="tag">Amazônia Legal · Baixada Maranhense</span>
+    <h1>Fumaça em Pinheiro<span>Queimadas, qualidade do ar e saúde: o que se sabe e como se proteger</span></h1>
+    <span class="under" style="margin:12px auto 0"></span>
+    <p>Pinheiro está dentro da Amazônia Legal e, como o resto do Maranhão, vive uma temporada de fogo todo fim de ano. A fumaça carrega partículas que chegam ao pulmão e ao coração.</p>
+    <div class="btns"><a class="btn" href="#focos">Quando o fogo aparece</a><a class="btn w" href="#saude">O que a fumaça faz com o corpo</a><a class="btn w" href="#prevencao">Como se proteger</a></div>
+  </div>
+</section>
+
+<section id="pinheiro"><div class="wrap two">
+  <figure class="sk mapa">
+    <img src="img/mapa-amazonia-legal-ma.png" width="473" height="393" alt="Recorte do mapa da Amazônia Legal 2024 mostrando o Maranhão, com Pinheiro marcado a oeste de São Luís. Toda a faixa a oeste da linha verde vertical, onde Pinheiro está, faz parte da Amazônia Legal.">
+    <figcaption>Recorte do mapa Amazônia Legal 2024 (IBGE). A posição de Pinheiro é aproximada.</figcaption>
+  </figure>
+  <div>
+    <span class="ribbon">Pinheiro no mapa</span>
+    <p class="lead">Pinheiro tem 100% do território dentro da Amazônia Legal. Esse recorte é uma área de atuação da SUDAM definida em lei, e não é o mesmo que o bioma Amazônia.</p>
+    <ul class="facts">
+      <li><b>1.513 km²</b> de área municipal, toda dentro da Amazônia Legal</li>
+      <li><b>2108603</b> código IBGE, na Região Geográfica Intermediária de São Luís</li>
+      <li><b>11 municípios</b> na Região Imediata de Pinheiro, entre eles Bequimão, Palmeirândia, Santa Helena e Turiaçu</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="focos" class="band"><div class="wrap">
+  <span class="kicker" style="color:var(--ink)">Focos de calor no Maranhão, 1998–2026</span>
+  <h2 class="t">O fogo tem hora para chegar</h2>
+  <span class="under" style="background:#fff"></span>
+  <p class="lead">Em um ano típico, cerca de 3 em cada 4 focos do Maranhão aparecem de agosto a novembro, no fim da estação seca.</p>
+
+  <div class="ctrl"><label for="ano">Escolha o ano:</label><select id="ano"></select></div>
+  <div class="sk chart">
+    <svg id="svg" viewBox="0 0 420 270" role="img" aria-label="Gráfico de focos de calor por mês"></svg>
+    <div class="leg"><span style="--c:#f26a1b">Ago a nov (período crítico)</span><span style="--c:#ffc93c">Outros meses</span><span style="--c:#fff">Linha tracejada: média histórica</span></div>
+    <p id="lido" aria-live="polite"></p>
+  </div>
+
+  <div class="grid g3" style="margin-top:30px">
+    <div class="sk stat"><div class="n">76%</div><p>dos focos do ano ocorrem de agosto a novembro (média 1998–2025).</p></div>
+    <div class="sk stat"><div class="n">17,8%</div><p>dos focos do Brasil em 2025 estavam no Maranhão: 24.300 de 136.393.</p></div>
+    <div class="sk stat"><div class="n">44.765</div><p>focos em 2007, o maior total anual da série. Em 2025 foram 24.300.</p></div>
+  </div>
+
+  <div class="sk cal">
+    <h3 style="font-size:1.6rem">Dois períodos de risco no mesmo ano</h3>
+    <div class="row" aria-hidden="true"><i class="on">J</i><i class="on">F</i><i class="on">M</i><i class="on">A</i><i class="on">M</i><i class="on">J</i><i>J</i><i>A</i><i>S</i><i>O</i><i>N</i><i>D</i></div>
+    <p>Enchentes e leptospirose: notificações de janeiro a junho, com pico em maio.</p>
+    <div class="row f" aria-hidden="true"><i>J</i><i>F</i><i>M</i><i>A</i><i>M</i><i>J</i><i>J</i><i class="on">A</i><i class="on">S</i><i class="on">O</i><i class="on">N</i><i>D</i></div>
+    <p style="margin-bottom:0">Focos de calor: de agosto a novembro, com média mais alta em setembro.</p>
+  </div>
+
+  <div class="sk note"><strong>Como ler estes números.</strong> Um foco de calor é um ponto de calor intenso detectado por satélite. Não é igual a um incêndio e não mede a fumaça no ar. Os dados são do Maranhão inteiro. O total de Pinheiro pode ser consultado por município no BDQueimadas, do INPE. Em 2026 os dados vão até novembro, e dezembro ainda não existe.</div>
+</div></section>
+
+<section id="mapa"><div class="wrap">
+  <span class="kicker">Mapa ao vivo · Programa Queimadas (INPE)</span>
+  <h2 class="t">Risco de fogo e chuva perto de Pinheiro</h2>
+  <span class="under"></span>
+  <p class="lead">As camadas vêm direto do serviço de mapas do INPE e mostram a data mais recente disponível. Clique ou toque no mapa para ler o valor de um ponto.</p>
+  <div class="seg" role="radiogroup" aria-label="Camada do mapa">
+    <label><input type="radio" name="cam" value="risco" checked><span>Risco de fogo</span></label>
+    <label><input type="radio" name="cam" value="seca"><span>Dias sem chuva</span></label>
+    <label><input type="radio" name="cam" value="chuva10"><span>Chuva dos últimos 10 dias</span></label>
+    <label><input type="radio" name="cam" value="prev7"><span>Chuva prevista (7 dias)</span></label>
+  </div>
+  <p id="desc"></p>
+  <div class="live">
+    <div id="mapaw" role="region" aria-label="Mapa interativo centrado em Pinheiro, Maranhão"></div>
+    <div class="sk leg2">Legenda<img id="leg" alt="Legenda da camada selecionada" width="60" height="180"></div>
+  </div>
+  <p id="ponto" aria-live="polite">Clique no mapa para ver o valor naquele ponto (veja a legenda).</p>
+  <p style="font-size:.8rem;margin:0">No celular, use dois dedos para mexer no mapa e um dedo para rolar a página. Mais camadas no <a href="http://terrabrasilis.dpi.inpe.br/queimadas/portal/" target="_blank" rel="noopener">portal do Programa Queimadas</a>.</p>
+</div></section>
+
+<section id="saude"><div class="wrap">
+  <span class="kicker">Efeitos da fumaça (PM2,5) na saúde</span>
+  <h2 class="t">Partícula pequena, estrago grande</h2>
+  <span class="under"></span>
+  <p class="lead">O PM2,5 são partículas de até 2,5 micrômetros e formam cerca de 90% da massa da fumaça de incêndios. Elas chegam aos alvéolos e podem passar para o sangue.</p>
+  <div class="grid g3" style="margin-top:34px">
+    <div class="sk panel"><span class="ico">🫁</span><h3>Pulmão e vias respiratórias</h3>
+      <p>As partículas causam inflamação e estresse oxidativo. Aparecem tosse, catarro, falta de ar e piora da função do pulmão, até em quem era saudável.</p>
+      <p>Mais atendimentos de emergência e internações por problemas respiratórios, com asma e DPOC entre os mais afetados. A fumaça de incêndio florestal pode ser mais tóxica que a de outras fontes.</p>
+      <div class="arrow">Brigadistas expostos mostram queda da capacidade vital forçada.</div></div>
+    <div class="sk panel"><span class="ico">🫀</span><h3>Coração e circulação</h3>
+      <p>No sangue, o PM2,5 provoca inflamação e lesão nos vasos e favorece a alta da pressão.</p>
+      <p>A fumaça é associada a mais atendimentos por infarto, AVC e parada cardiorrespiratória. Em idosos, a exposição acumulada aumenta as internações por doença do coração e arritmias, e a vulnerabilidade social piora o quadro.</p>
+      <div class="arrow">O efeito no coração pode aparecer no mesmo dia da exposição.</div></div>
+    <div class="sk panel"><span class="ico">👁️</span><h3>Olhos, nariz e garganta</h3>
+      <p>Gases como monóxido de carbono, acroleína, benzeno e formaldeído irritam olhos, nariz e garganta, mesmo em quem não tem doença.</p>
+      <p>Os sinais comuns são ardor, olho vermelho, lágrima e sensação de areia nos olhos. Dor de cabeça, dor no peito e coração acelerado podem surgir nas primeiras horas.</p></div>
+  </div>
+  <h3 style="font-size:1.7rem;margin-top:46px">Quem corre mais risco</h3>
+  <div class="chips"><span>👴 Idosos (65 anos ou mais)</span><span>🧒 Crianças, principalmente menores de 5 anos</span><span>🤰 Gestantes</span><span>😮‍💨 Quem tem asma, DPOC ou doença do coração</span><span>👷 Trabalhadores ao ar livre e famílias de baixa renda</span></div>
+</div></section>
+
+<section id="prevencao" class="band"><div class="wrap">
+  <span class="kicker" style="color:var(--ink)">Medidas de prevenção</span>
+  <h2 class="t">Da proteção mais eficaz à menos eficaz</h2>
+  <span class="under" style="background:#fff"></span>
+  <ol class="steps">
+    <li><b>1</b><div><h3>Sair da fumaça</h3><p>Afastar-se por um tempo da área afetada, quando for possível.</p></div></li>
+    <li><b>2</b><div><h3>Proteger o ambiente</h3><p>Manter janelas e portas fechadas. Onde houver, usar purificador de ar com filtro HEPA ou ventilação central com filtro MERV 13.</p></div></li>
+    <li><b>3</b><div><h3>Mudar a rotina</h3><p>Acompanhar a qualidade do ar, suspender exercício ao ar livre (principalmente o intenso) e deixar um plano e remédios de reserva para quem tem asma ou DPOC.</p></div></li>
+    <li><b>4</b><div><h3>Usar máscara</h3><p>Máscara N95 ou equivalente certificada ao sair, quando não der para evitar. Um estudo de modelagem estimou cerca de 30% menos internações respiratórias com o uso correto.</p></div></li>
+  </ol>
+  <div class="eff"><span>Mais eficaz</span><span>Menos eficaz</span></div>
+
+  <div class="two2">
+    <div class="sk panel">
+      <h3>✅ Plano para dias de fumaça</h3>
+      <div class="prog"><i id="prog"></i></div>
+      <ul class="cl" id="cl">
+        <li><label><input type="checkbox"><span>Fechar janelas e portas</span></label></li>
+        <li><label><input type="checkbox"><span>Ver a qualidade do ar do dia antes de sair</span></label></li>
+        <li><label><input type="checkbox"><span>Adiar exercício e atividade pesada ao ar livre</span></label></li>
+        <li><label><input type="checkbox"><span>Separar a máscara N95 e usar ao sair</span></label></li>
+        <li><label><input type="checkbox"><span>Conferir se há remédio de reserva (asma, DPOC, coração)</span></label></li>
+        <li><label><input type="checkbox"><span>Cuidar primeiro de crianças, idosos e gestantes</span></label></li>
+      </ul>
+    </div>
+    <div class="sk panel">
+      <h3>🩺 Procure atendimento se houver</h3>
+      <div class="sinais"><div>Chiado no peito</div><div>Dor no peito</div><div>Coração disparado</div><div>Falta de ar forte</div></div>
+      <p>Quem tem doença do coração ou do pulmão e sente algum desses sinais em dia de fumaça deve procurar atendimento ou ir para um lugar com ar melhor.</p>
+      <div class="calls"><a class="call" href="tel:192"><small>SAMU</small><b>192</b></a><a class="call" href="tel:136"><small>Disque Saúde</small><b>136</b></a></div>
+      <div class="arrow">Para a atenção primária: orientar a população sobre o índice de qualidade do ar, priorizar os grupos vulneráveis e integrar alertas precoces na temporada de queimadas.</div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <strong>Fontes:</strong>
+  <ul>
+    <li>Texto-base: <em>Efeitos da Fumaça de Queimadas (PM2,5) na Saúde e Medidas de Prevenção</em>, que cita Suran (JAMA, 2023); Noah et al. (Curr Allergy Asthma Rep, 2023); Jiao et al. (Sci Total Environ, 2024); Panumasvivat et al. (Sci Rep, 2024); Blaustein et al. (Circ Res, 2024); Zhang et al. (JACC, 2026); Tian et al. (Nat Commun, 2024); Balmes (NEJM, 2018); Xu et al. (NEJM, 2020); Jerrett et al. (PNAS, 2024); Fadadu et al. (JAMA, 2024).</li>
+    <li>IBGE. Malha Municipal Digital 2024 e mapa Amazônia Legal 2024; área de atuação da SUDAM (Lei Complementar nº 124/2007).</li>
+    <li>Mapa: serviço WMS do Programa Queimadas (INPE), camadas de risco de fogo, dias sem chuva e precipitação; mapa-base © colaboradores do OpenStreetMap.</li>
+    <li>Séries históricas mensais de focos de calor, 1998–2026 (Maranhão, Amazônia Legal e Brasil).</li>
+  </ul>
+  © 2026 PET-Saúde: Equidade e Clima - GAT 5
+</div></footer>
+
+<script>
+const D={"1998":[null,null,null,null,null,78,276,1177,3933,5140,2235,1396],"1999":[54,6,17,4,3,32,258,897,1739,3207,1494,1001],"2000":[19,11,6,6,28,94,233,839,1364,2654,2267,1462],"2001":[29,1,0,2,21,101,549,2035,4550,6597,3521,1290],"2002":[49,116,16,28,71,227,1675,3789,5543,7152,8421,3377],"2003":[575,13,24,112,236,865,2675,2407,7799,8588,7536,3718],"2004":[338,24,43,98,324,818,1677,2426,6807,5386,10348,5296],"2005":[674,73,19,99,108,662,1984,3118,7805,8704,6670,3775],"2006":[386,36,19,20,89,520,1416,2416,3782,4270,6879,3469],"2007":[634,21,89,76,294,1477,2786,10780,11245,9694,5191,2478],"2008":[203,59,6,40,101,687,1542,1777,3575,5018,5728,3386],"2009":[400,30,39,27,25,312,1182,2181,3107,2839,6505,2485],"2010":[457,104,129,143,300,1225,2601,6826,11813,4095,6082,2502],"2011":[195,14,43,46,98,689,1159,2192,5086,3171,4038,2584],"2012":[461,84,54,114,370,987,3693,10519,7376,5911,2644,2086],"2013":[316,72,45,83,132,603,1332,2374,4312,3221,2368,2597],"2014":[291,17,40,66,140,786,2027,5338,4357,5574,3710,2329],"2015":[458,78,41,103,184,850,1616,5411,5502,6387,4159,3647],"2016":[395,268,70,103,186,693,2182,3849,3109,5617,3826,1491],"2017":[178,44,32,90,157,644,1973,3001,9243,4538,2706,2970],"2018":[281,15,93,50,203,738,1457,2833,3177,1832,2309,904],"2019":[712,74,57,63,139,749,1078,3366,3667,3645,3158,1813],"2020":[86,72,39,93,231,757,1871,2162,4403,3394,2481,1228],"2021":[228,128,62,96,471,979,1507,3322,2469,3069,2502,1244],"2022":[185,92,44,66,454,917,2170,3473,4166,4495,2621,1541],"2023":[298,135,106,155,478,1338,2405,2431,4719,4283,2893,1872],"2024":[457,98,159,95,434,1166,2320,2892,4132,4500,4046,2580],"2025":[434,105,63,134,455,755,1548,2493,4595,5019,5784,2915],"2026":[990,97,45,44,294,565,673,1937,2481,4225,1829,null]};
+const AVG=[326,66,52,75,212,705,1685,3440,5121,4929,4362,2408];
+const M=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],MF=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+const F=n=>n.toLocaleString('pt-BR');
+const sel=document.getElementById('ano'),svg=document.getElementById('svg'),lido=document.getElementById('lido');
+Object.keys(D).reverse().forEach(y=>sel.add(new Option(y+(y==='2026'?' (parcial)':y==='1998'?' (a partir de junho)':''),y)));
+sel.value='2025';
+function nice(v){const p=10**Math.floor(Math.log10(v)),s=v/p;return(s<=1?1:s<=2?2:s<=5?5:10)*p}
+function resumo(y){const v=D[y],t=v.reduce((a,b)=>a+(b||0),0),mx=Math.max(...v.map(x=>x||0)),i=v.indexOf(mx);
+  lido.textContent=`${y}: ${F(t)} focos no ano. Mês mais intenso: ${MF[i]} (${F(mx)}).`+(y==='2026'?' Dados parciais, até novembro.':'')+' Toque numa barra para ver o mês.'}
+function mes(y,i){const v=D[y][i];lido.textContent=`${MF[i][0].toUpperCase()+MF[i].slice(1)} de ${y}: `+(v==null?'sem dado':`${F(v)} focos`)+` (média histórica do mês: ${F(AVG[i])}).`}
+function draw(){const y=sel.value,v=D[y],L=40,R=8,T=14,B=26,W=420,H=270,pw=W-L-R,ph=H-T-B;
+  const mx=Math.max(...v.map(x=>x||0),...AVG),st=nice(mx/4),top=st*Math.ceil(mx/st),sx=pw/12,Y=n=>T+ph-ph*n/top;
+  let s='';for(let g=0;g<=top;g+=st)s+=`<line x1="${L}" x2="${W-R}" y1="${Y(g)}" y2="${Y(g)}" stroke="#4a1c05" stroke-opacity=".15"/><text x="${L-5}" y="${Y(g)+4}" text-anchor="end" font-size="11">${F(g)}</text>`;
+  v.forEach((n,i)=>{const x=L+i*sx+sx*.17,w=sx*.66,h=ph*(n||0)/top,hot=i>=7&&i<=10;
+    s+=`<g tabindex="0" role="button" aria-label="${MF[i]} de ${y}" data-i="${i}" style="cursor:pointer"><rect x="${L+i*sx}" y="${T}" width="${sx}" height="${ph}" fill="transparent"/>`+(n==null?'':`<rect x="${x}" y="${Y(n||0)}" width="${w}" height="${Math.max(h,1)}" rx="3" fill="${hot?'#f26a1b':'#ffc93c'}" stroke="#4a1c05" stroke-width="2"/>`)+`<text x="${x+w/2}" y="${H-9}" text-anchor="middle" font-size="11">${M[i]}</text></g>`});
+  s+=`<polyline fill="none" stroke="#4a1c05" stroke-width="2" stroke-dasharray="5 4" points="${AVG.map((a,i)=>`${L+i*sx+sx/2},${Y(a)}`).join(' ')}" pointer-events="none"/>`;
+  svg.innerHTML=s;svg.setAttribute('aria-label',`Focos de calor por mês no Maranhão em ${y}`);resumo(y)}
+svg.addEventListener('click',e=>{const g=e.target.closest('g[data-i]');if(g)mes(sel.value,+g.dataset.i)});
+svg.addEventListener('focusin',e=>{const g=e.target.closest('g[data-i]');if(g)mes(sel.value,+g.dataset.i)});
+sel.addEventListener('change',draw);draw();
+/* checklist */
+const boxes=[...document.querySelectorAll('#cl input')];let saved={};try{saved=JSON.parse(localStorage.getItem('fumaca')||'{}')}catch(e){}
+const prog=()=>{document.getElementById('prog').style.width=100*boxes.filter(b=>b.checked).length/boxes.length+'%'};
+boxes.forEach((b,i)=>{b.checked=!!saved[i];b.addEventListener('change',()=>{saved[i]=b.checked;try{localStorage.setItem('fumaca',JSON.stringify(saved))}catch(e){}prog()})});prog();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+(function(){
+const box=document.getElementById('mapaw');
+if(!window.L){box.innerHTML='<p style="padding:20px;font-weight:700">Não foi possível carregar o mapa agora. Tente de novo mais tarde.</p>';return}
+const WMS='https://data.inpe.br/queimadas/geoserver/ows',PIN=[-2.5219,-45.0817];
+const CRS=L.Util.extend({},L.CRS.EPSG3857,{code:'EPSG:900913'});
+const CAM={
+ risco:{n:'dados-meteorologicos:FireRisk',d:'Risco de fogo observado no dia: indica o quanto o ambiente está favorável para o fogo começar e se espalhar.'},
+ seca:{n:'dados-meteorologicos:NumberDaysWithoutRain',d:'Número de dias seguidos sem chuva em cada ponto. Quanto mais dias, mais seca fica a vegetação.'},
+ chuva10:{n:'dados-meteorologicos:PREC.ACUM.10DIAS',d:'Chuva observada, somada nos últimos 10 dias.'},
+ prev7:{n:'dados-meteorologicos:PREV_PREC_ACUM_0-7DIAS_IMERG',d:'Chuva prevista, somada para os próximos 7 dias.'}};
+const map=L.map(box,{center:PIN,zoom:7,minZoom:4,maxZoom:11,scrollWheelZoom:false,dragging:!L.Browser.mobile});
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+L.circleMarker(PIN,{radius:9,color:'#4a1c05',weight:3,fillColor:'#f26a1b',fillOpacity:1}).addTo(map).bindTooltip('Pinheiro',{permanent:true,direction:'right',offset:[10,0]});
+const leg=document.getElementById('leg'),desc=document.getElementById('desc'),ponto=document.getElementById('ponto');
+let cur,key='risco';
+function show(k){key=k;if(cur)map.removeLayer(cur);
+  cur=L.tileLayer.wms(WMS,{layers:CAM[k].n,format:'image/png',transparent:true,version:'1.3.0',crs:CRS,opacity:.72,attribution:'Dados: INPE/Programa Queimadas'}).addTo(map);
+  leg.src=WMS+'?service=WMS&version=1.3.0&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer='+encodeURIComponent(CAM[k].n);
+  desc.textContent=CAM[k].d;ponto.textContent='Clique no mapa para ver o valor naquele ponto (veja a legenda).'}
+document.querySelectorAll('input[name=cam]').forEach(r=>r.addEventListener('change',()=>show(r.value)));
+show('risco');
+map.on('click',async e=>{
+  const s=map.getSize(),b=map.getBounds(),a=CRS.project(b.getSouthWest()),c=CRS.project(b.getNorthEast());
+  const q=new URLSearchParams({service:'WMS',version:'1.3.0',request:'GetFeatureInfo',layers:CAM[key].n,query_layers:CAM[key].n,styles:'',crs:'EPSG:900913',bbox:[a.x,a.y,c.x,c.y].join(','),width:s.x,height:s.y,i:Math.round(e.containerPoint.x),j:Math.round(e.containerPoint.y),info_format:'application/json',feature_count:1});
+  ponto.textContent='Consultando o INPE…';
+  try{const r=await fetch(WMS+'?'+q);if(!r.ok)throw new Error('http');
+    const j=await r.json(),f=j.features&&j.features[0],v=f?Object.values(f.properties||{}).find(x=>x!=null):null;
+    ponto.textContent=v==null?'Sem dado neste ponto.':'Valor neste ponto: '+(typeof v==='number'?v.toLocaleString('pt-BR',{maximumFractionDigits:1}):v)+' (veja a legenda).'}
+  catch(_){ponto.textContent='Não foi possível ler o valor deste ponto. O servidor do INPE pode não permitir a consulta direta pelo navegador.'}
+});
+})();
+</script>
+</body>
+</html>
