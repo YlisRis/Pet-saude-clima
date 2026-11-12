@@ -115,7 +115,8 @@ footer ul{padding-left:18px;margin:8px 0 18px}
 .live{display:grid;grid-template-columns:1fr 190px;gap:18px;margin-top:18px;align-items:start}
 @media(max-width:760px){.live{grid-template-columns:1fr}#mapaw{height:380px!important}}
 #mapaw{position:relative;z-index:0;height:460px;border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:5px 5px 0 var(--yl);background:var(--bg2)}
-.leg2{padding:14px;text-align:center;font-size:.8rem;font-weight:800}.leg2 img{max-width:100%;height:auto;margin-top:8px;background:#fff;border-radius:6px}
+.leg2{padding:14px 12px;text-align:center}.leg2 strong{display:block;font:800 1.3rem 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--ink)}
+.lw{margin-top:10px;background:#fff;border:2px solid var(--ink);border-radius:10px;padding:0 6px 8px;overflow:hidden;display:flex;justify-content:center}.lw img{display:block;max-width:100%;height:auto;margin-top:8px}.lw.crop img{margin-top:-31px}
 #desc{margin:16px 0 0;font-weight:700;max-width:720px}#ponto{margin:8px 0 0;font-weight:800;min-height:2.6em}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
@@ -198,7 +199,7 @@ footer ul{padding-left:18px;margin:8px 0 18px}
   <p id="desc"></p>
   <div class="live">
     <div id="mapaw" role="region" aria-label="Mapa interativo centrado em Pinheiro, Maranhão"></div>
-    <div class="sk leg2">Legenda<img id="leg" alt="Legenda da camada selecionada" width="60" height="180"></div>
+    <div class="sk leg2"><strong>Legenda</strong><div class="lw"><img id="leg" alt="Legenda da camada selecionada"></div></div>
   </div>
   <p id="ponto" aria-live="polite">Clique no mapa para ver o valor naquele ponto (veja a legenda).</p>
   <p style="font-size:.8rem;margin:0">No celular, use dois dedos para mexer no mapa e um dedo para rolar a página. Mais camadas no <a href="http://terrabrasilis.dpi.inpe.br/queimadas/portal/" target="_blank" rel="noopener">portal do Programa Queimadas</a>.</p>
@@ -319,7 +320,7 @@ let cur,key='risco';
 function show(k){key=k;if(cur)map.removeLayer(cur);
   cur=L.tileLayer.wms(WMS,{layers:CAM[k].n,format:'image/png',transparent:true,version:'1.3.0',crs:CRS,opacity:.72,attribution:'Dados: INPE/Programa Queimadas'}).addTo(map);
   leg.src=WMS+'?service=WMS&version=1.3.0&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer='+encodeURIComponent(CAM[k].n);
-  desc.textContent=CAM[k].d;ponto.textContent='Clique no mapa para ver o valor naquele ponto (veja a legenda).'}
+  leg.parentNode.classList.toggle('crop',k==='risco');desc.textContent=CAM[k].d;ponto.textContent='Clique no mapa para ver o valor naquele ponto (veja a legenda).'}
 document.querySelectorAll('input[name=cam]').forEach(r=>r.addEventListener('change',()=>show(r.value)));
 show('risco');
 map.on('click',async e=>{
